@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <title>CIT 261 | Parse and Stringify</title>
+    <meta charset="utf-8">
+    <link type="text/css" rel="stylesheet" href="normalize.css" />
+    <link type="text/css" rel="stylesheet" href="styles.css" />
+    <meta name="pinterest" content="nopin" />
+    <script async>
+        var jsonCasablanca = '{"filmName": "Casablanca", "cast": [["Humphrey Bogart", "Ingrid Bergman", "Paul Henreid", "Claude Rains", "Conrad Veidt", "Sydney Greenstreet"], ["Rick Blaine", "Ilsa Lund", "Victor Laszlo", "Captain Louis Renault", "Major Heinrich Strasser", "Signor Ferrari"]]}';
+        var jsonStarTrek = '{"filmName": "Star Trek", "cast": [["Chris Pine", "Zachary Quinto", "Leonard Nimoy", "Eric Bana", "Bruce Greenwood", "Karl Urban", "Zoe Saldana", "Simon Pegg", "John Cho", "Anton Yelchin"], ["Kirk", "young Spock", "old Spock", "Nero", "Pike", "Bones", "Uhura", "Scotty", "Sulu", "Chekov"]]}';
+        function parseCast(myJsonMovie) {
+            var x = "";
+            var myMovie = JSON.parse(myJsonMovie);
+            for (var i = 0; i < myMovie.cast[0].length; i++) {
+                x += myMovie.cast[0][i] + " played " + myMovie.cast[1][i] + ".<br>";
+            }
+            document.getElementById("parse").innerHTML = x;
+        }
+        
+        function stringifyCast() {
+            var myMovie = {"filmName": "North by Northwest",
+                           "cast": [["Cary Grant", "Eva Marie Saint", "James Mason", 
+                                    "Jessie Royce Landis", "Leo G. Carroll"],
+                                    ["Roger O. Thornhill", "Eve Kendall", "Phillip Vandamm", "Clara Thornhill", "The Professor"]]
+                          }
+            var myJSON = JSON.stringify(myMovie);
+            document.getElementById("stringify").innerHTML = myJSON;
+        }
+    </script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <h1>PARSE and STRINGIFY</h1>
+            <p>Nikkala Thomson</p>
+            <p>CIT 261</p>
+            <nav>
+            </nav>
+        </header>
+
+        <main>
+            <!--Parse section -->
+            <p>Click a movie below to parse its cast list from JSON text to an object and then display it:</p>
+            <button onclick="parseCast(jsonCasablanca)">Casablanca</button>
+            <button onclick="parseCast(jsonStarTrek)">Star Trek (2009)</button><br>
+            <p id="parse"></p><br>
+            
+            <!--Stringify section -->
+            <p>Click below to stringify and display the cast data from North by Northwest</p>
+            <button onclick="stringifyCast()">Stringify</button>
+            <p id="stringify"></p>
+            
+        </main>
+        
+        <footer>
+        </footer>
+    </div>
+    <!-- end of wrapper-->
+</body>
+
+</html>
