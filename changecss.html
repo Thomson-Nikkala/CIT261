@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <title>CIT 261 | Manipulating CSS Class Properties</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../pagestyle.css" />
+    <link rel="stylesheet" title="pink" href="pinkstyle.css" />
+    <link rel="alternate stylesheet" title="green" href="greenstyle.css" />
+    <meta name="pinterest" content="nopin" />
+    <style id="myStyle"></style> 
+    <script>
+        
+        //Find style sheet by title and make it the active stylesheet
+        function setActiveStyleSheet(title) {
+            var i, myLink;
+            var links = document.getElementsByTagName("link");
+            for(i=0; iLen=links.length; i++) {
+                myLink=links[i];
+                if(myLink.getAttribute("rel").indexOf("style") != -1  //link is stylesheet
+                && myLink.getAttribute("title")) {  //link has a title
+                    myLink.disabled = true;  //disable the stylesheet
+                    if(myLink.getAttribute("title") == title) myLink.disabled = false;
+                    }  //if titles match, enable
+                }
+            }
+        
+        //Add a new style rule to existing stylesheet(s)
+        function addNewStyleRule() {
+            var styleTag=document.getElementById("myStyle");  //get the style element
+            var sheet=styleTag.sheet?styleTag.sheet:styleTag.styleSheet;  //get the style sheet
+            sheet.insertRule(".colormered {color: red;}", 0);  //insert style rule at top of first sheet
+        }
+        
+        function colorElementBlue(id) {
+            var el = document.getElementById(id);
+            el.style.color = "blue";
+            } 
+        
+        function changeMyClass(id) {
+            var el = document.getElementById(id);
+            el.className = "colormered";
+        }
+        
+    </script>
+</head>        
+    
+<body>
+    <div id="wrapper">
+        <header>
+            <h1>MANIPULATING CSS CLASS PROPERTIES</h1>
+            <p>Nikkala Thomson</p>
+            <p>CIT 261</p>
+            <nav>
+            </nav>
+        </header>
+
+        <main>
+            <button onclick="setActiveStyleSheet('green');">Click here to activate the green stylesheet! </button><br><br>
+            <button class="colormered" onclick="addNewStyleRule();">Click me to change the "colormered" class to red text</button><br><br>
+            <button id="justme" onclick="colorElementBlue('justme')">Change just me!</button><br><br>
+            <button id="changeclass" onclick="changeMyClass('changeclass')">Click to change my class to "colormered"</button><br><br>
+            <p class="colormered">I'm in the "colormered" class; don't forget about me!</p>
+        </main>
+
+        <footer>
+        </footer>
+    </div>
+    <!-- end of wrapper-->
+</body>
+
+</html>
