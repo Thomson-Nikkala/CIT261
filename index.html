@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <title>CIT 261 | DOM Content Manipulation</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../pagestyle.css" />
+    <link rel="stylesheet" href="addstyle.css" />
+    <meta name="pinterest" content="nopin" />
+    <style id="myStyle"></style>
+    <script>
+        // add a color bar before the given element
+        function addDivBefore(color, element) {
+            var newDiv = document.createElement("DIV");
+            var text = document.createTextNode(color);
+            newDiv.appendChild(text);
+            newDiv.style.backgroundColor = color;
+            newDiv.classList.add("bar");
+            if (color == "Yellow") {
+                newDiv.style.color = "black";
+            }
+            element.parentNode.insertBefore(newDiv, element);
+        }
+        // add a color bar at the end of the parent element.
+        function addDivAfter(color, parent) {
+            var newDiv = document.createElement("DIV");
+            var text = document.createTextNode(color);
+            newDiv.appendChild(text);
+            newDiv.style.backgroundColor = color;
+            newDiv.classList.add("bar");
+            if (color == "Yellow") {
+                newDiv.style.color = "black";
+            }
+            parent.appendChild(newDiv);
+        }
+
+        // add a color bar at the top of the rainbow (or make a blue one if empty)
+        function addTop() {
+            var rainbow = document.getElementById("rainbowWrapper");
+            var rainbowTop = rainbow.firstElementChild;
+
+            if (rainbowTop == null) {
+                addDivAfter("Blue", rainbow);
+            } else {
+                var topColor = rainbowTop.innerHTML;
+
+                switch (topColor) {
+                    case "Red":
+                        addDivBefore("Violet", rainbowTop);
+                        break;
+                    case "Orange":
+                        addDivBefore("Red", rainbowTop);
+                        break;
+                    case "Yellow":
+                        addDivBefore("Orange", rainbowTop);
+                        break;
+                    case "Green":
+                        addDivBefore("Yellow", rainbowTop);
+                        break;
+                    case "Blue":
+                        addDivBefore("Green", rainbowTop);
+                        break;
+                    case "Indigo":
+                        addDivBefore("Blue", rainbowTop);
+                        break;
+                    case "Violet":
+                        addDivBefore("Indigo", rainbowTop);
+                        break;
+                    default:
+                        alert("ERROR");
+                }
+                return false;
+            }
+        }
+
+        // add a color bar at the bottom of the rainbow (or a blue one if empty)
+        function addBottom() {
+            var rainbow = document.getElementById("rainbowWrapper");
+            var rainbowLast = rainbow.lastElementChild;
+            if (rainbowLast == null) {
+                addDivAfter("Blue", rainbow);
+            } else {
+                var bottomColor = rainbowLast.innerHTML;
+                switch (bottomColor) {
+                    case "Red":
+                        addDivAfter("Orange", rainbow);
+                        break;
+                    case "Orange":
+                        addDivAfter("Yellow", rainbow);
+                        break;
+                    case "Yellow":
+                        addDivAfter("Green", rainbow);
+                        break;
+                    case "Green":
+                        addDivAfter("Blue", rainbow);
+                        break;
+                    case "Blue":
+                        addDivAfter("Indigo", rainbow);
+                        break;
+                    case "Indigo":
+                        addDivAfter("Violet", rainbow);
+                        break;
+                    case "Violet":
+                        addDivAfter("Red", rainbow);
+                        break;
+                    default:
+                        alert("ERROR");
+
+                }
+                return false;
+            }
+        }
+
+        // remove the top color bar from the rainbow
+        function removeTop() {
+            var rainbow = document.getElementById("rainbowWrapper");
+            rainbow.removeChild(rainbow.firstElementChild);
+        }
+
+        //remove the bottom color bar from the rainbow
+        function removeBottom() {
+            var rainbow = document.getElementById("rainbowWrapper");
+            rainbow.removeChild(rainbow.lastElementChild);
+        }
+
+        // reset the rainbow to a single blue color bar
+        function resetRainbow() {
+            var rainbow = document.getElementById("rainbowWrapper");
+            // As long as the rainbow has a child node, remove it
+            while (rainbow.hasChildNodes()) {
+                rainbow.removeChild(rainbow.firstChild);
+            }
+            //add one "Blue" element
+            addDivAfter("Blue", rainbow);
+        }
+
+        //add event listeners after full document load 
+        var init = function() {
+            var myButton = document.getElementById("addTop");
+            myButton.addEventListener("click", addTop, false);
+
+            var myButton2 = document.getElementById("addBottom");
+            myButton2.addEventListener("click", addBottom, false);
+
+            var myButton3 = document.getElementById("removeTop");
+            myButton3.addEventListener("click", removeTop, false);
+
+            var myButton4 = document.getElementById("removeBottom");
+            myButton4.addEventListener("click", removeBottom, false);
+
+            var myButton5 = document.getElementById("reset");
+            myButton5.addEventListener("click", resetRainbow, false);
+        }
+
+        window.addEventListener("DOMContentLoaded", init, false);
+    </script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <h1>DOM CONTENT MANIPULATION</h1>
+            <p>Nikkala Thomson</p>
+            <p>CIT 261</p><br>
+            <nav>
+            </nav>
+        </header>
+
+        <main>
+            <h2>Create Your Own Rainbow</h2><br>
+            <div id="rainbowWrapper">
+                <div id="theStart" class="bar">Blue</div>
+            </div>
+            <br><button id="addTop">Add to the top of the rainbow</button><br>
+            <button id="addBottom">Add to the bottom of the rainbow.</button><br>
+            <button id="removeTop">Take away from the top of the rainbow.</button><br>
+            <button id="removeBottom">Take away from the bottom of the rainbow.</button><br>
+            <button id="reset">Reset the rainbow.</button>
+        </main>
+
+        <footer>
+        </footer>
+    </div>
+    <!-- end of wrapper-->
+</body>
+
+</html>
