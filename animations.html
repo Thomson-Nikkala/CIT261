@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <title>CIT 261 | CSS3 Animations</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../pagestyle.css" />
+    <!-- base stylesheet -->
+    <link rel="stylesheet" href="addstyle.css" />
+    <!-- additional stylesheet -->
+    <meta name="pinterest" content="nopin" />
+
+    <script>
+        function rainfall() {
+            var el = document.getElementById("drop1");
+            el.className = "tear enabled";
+            return true;
+        }
+
+
+        function nofall() {
+            var el = document.getElementById("drop1");
+            el.className = "tear";
+            return false;
+        }
+
+    </script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <h1>CSS3 ANIMATIONS</h1>
+            <p>Nikkala Thomson</p>
+            <p>CIT 261</p>
+            <nav>
+            </nav>
+        </header>
+
+        <main>
+            <br><br>
+            <p>Here is my experiment at animating a teardrop falling. I chose to use an ease-in timing function to simulate the acceleration of the raindrop as it approaches terminal velocity.</p><br>
+            <button onclick="rainfall()">Make it Rain</button><br><br>
+            <button onclick="nofall()">Make it Stop</button><br>
+            <div class="tear" id="drop1"></div>
+        </main>
+
+        <footer>
+        </footer>
+    </div>
+    <!-- end of wrapper-->
+</body>
+
+</html>
