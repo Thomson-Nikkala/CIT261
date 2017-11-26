@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <title>CIT 261 | HTML5 audio, video, and canvas tags </title>
+    <meta charset="utf-8">
+    <link type="text/css" rel="stylesheet" href="../pagestyle.css" />
+    <link type="text/css" rel="stylesheet" href="addstyle.css" />
+    <meta name="pinterest" content="nopin" />
+    <script>
+        //add additional content after full DOM content load
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            //Fill the background for the flower.
+            var context = document.getElementById("flowerBed").getContext('2d');
+            context.fillStyle = "#4cbb17"; //set background color
+            context.fillRect(0, 0, 200, 200); //fill background
+            
+            //Draw the petals of the flower.  I am sure there is a mathematical shortcut here, some kind of pattern. I can see it, but it's not exactly cosine or sine as it appears to be.  So, by hand it is.
+            context.fillStyle = "white";
+            context.beginPath();
+            context.arc(145, 55, 60, 0.75 * Math.PI, 1.25 * Math.PI);
+            context.fill();
+            context.beginPath();
+            context.arc(163, 100, 60, Math.PI, 1.5 * Math.PI);
+            context.fill();
+            context.beginPath();
+            context.arc(143, 145, 60, 1.25 * Math.PI, 1.75 * Math.PI);
+            context.fill();
+            context.beginPath();
+            context.arc(100, 163, 60, 1.5 * Math.PI, 2 * Math.PI);
+            context.fill();
+            context.beginPath();
+            context.arc(55, 145, 60, 1.75 * Math.PI, 2.25 * Math.PI);
+            context.fill();
+            context.beginPath();
+            context.arc(37, 100, 60, 2.0 * Math.PI, 2.5 * Math.PI);
+            context.fill();
+            context.beginPath();
+            context.arc(55, 55, 60, 2.25 * Math.PI, 2.75 * Math.PI);
+            context.fill();
+            context.beginPath();
+            context.arc(100, 37, 60, 2.5 * Math.PI, 3 * Math.PI);
+            context.fill();
+            
+            // now for the center of the flower
+            context.fillStyle = "yellow";
+            context.beginPath();
+            context.arc(100, 100, 15, 0, 2 * Math.PI);
+            context.closePath();
+            context.fill();
+
+
+        });
+
+    </script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <h1>HTML5 TAGS (audio, video, canvas)</h1>
+            <p>Nikkala Thomson</p>
+            <p>CIT 261</p>
+            <nav>
+            </nav>
+        </header>
+
+        <main>
+            <h2>My Husband Tying a Sheet Bend Knot</h2><br>
+            <video controls preload="metadata"> 
+                  <!--The preload loads the metadata (first frame, length, etc.) of the video when the page loads so there isn't a blank space where it should be. -->
+                <source src="../audiovideo/sheetbendknot.mp4" type="video/mp4">
+                <source src="../audiovideo/Sheetbendknot.webm" type="video/webm">
+                <source src="../audiovideo/sheetbendknot.ogv" type="video/ogg">
+                <p>Your browser does not support HTML5 video. You can 
+                    <a href="/audiovideo/sheetbendknot.zip" title="download a zipped version of the file"></a> (3.72 MB) of the file in MP4 format to your computer.</p>
+            </video><br><br>
+            <h2>My Son Playing the Digeridoo</h2><br>
+            <audio controls preload="none">
+                <!-- Not necessary to preload audio. -->
+                <source src="../audiovideo/kendigeridoo.mp3">
+                <source src="../audiovideo/kendigeridoo.ogg">
+                <p>Your browser does not support HTML5 audio.  You can 
+                    <a href="../audiovideo/kendigeridoo.zip" title="download a zipped MP3 file"> download a zipped version </a> of the file in MP3 format to listen on your own MP3 player by right-clicking the link and selecting "Save as..."</p><br><br>
+            </audio>
+            <h2>Canvas (or, another way to draw a flower!)</h2>
+            <canvas id="flowerBed" width="200" height="200">Your browser does not support HTML canvas.</canvas><br><br>
+
+        </main>
+        <footer>
+        </footer>
+    </div>
+    <!-- end of wrapper-->
+</body>
+
+</html>
