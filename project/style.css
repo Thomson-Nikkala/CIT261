@@ -1,0 +1,95 @@
+/****** General Styles *********/
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: black;
+}
+
+
+header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.logo {
+    margin: 10px 10px 10px 20px;
+}
+
+.logo h1 {
+    color: white;
+    font-size: 1.8em;
+}
+
+.sub-logo {
+    color: black;
+    text-shadow: -1px 0 #fff,0 1px #fff,1px 0 #fff,0 -1px #fff;
+    font-size: 2em;
+}
+
+
+button {
+    margin: 5px;
+    width: 75px;
+    height: 75px;
+     background: #ededed;
+  border: 1px solid #ccc;
+  -webkit-box-shadow: 1px 1px 2px #ccc;
+     -moz-box-shadow: 1px 1px 2px #ccc;
+          box-shadow: 1px 1px 2px #ccc;
+  padding: 10px 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  
+}
+
+button.active {
+    background: #e0e0e0;
+  outline: none;
+  -webkit-box-shadow: inset 0px 0px 4px #ccc;
+     -moz-box-shadow: inset 0px 0px 4px #ccc;
+          box-shadow: inset 0px 0px 4px #ccc;
+    
+}
+
+button img {
+    width: 60px;
+    display: block;
+    margin-left: -23px;
+    margin-top: -5px;
+    
+}
+
+#image-of-the-day {
+  display: flex;
+  justify-content: center;
+    max-width: 100%;
+    height: auto;
+}
+
+/* examples of the different prefixes
+-webkit-transition: all 1s ease;
+-moz-transition: all 1s ease;
+-ms-transition: all 1s ease;
+-o-transition: all 1s ease;
+transition: all 1s ease;
+*/
+
+/* centering block elements
+margin: 0 auto;
+***centering inline elements
+text-align: center;
+*/
+

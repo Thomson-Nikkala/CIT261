@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <title>CIT 261 | Final Project</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="style.css" />
+    <meta name="pinterest" content="nopin" />
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            function insertImg(imgUrl) {
+                var src = document.getElementById("image-of-the-day");
+                var img = document.createElement("img");
+                img.src = imgUrl;
+                src.appendChild(img);
+            }
+
+
+            var myJSON1 = new XMLHttpRequest();
+            var address1 = "https://api.nasa.gov/planetary/apod?api_key=QbBQagRXZ6lfosDU5fiS5itVP7JzHENQ0EvnxC6y";
+
+            myJSON1.onreadystatechange = function() {
+                if (this.readyState === 4 && this.status === 200) {
+                    var data1 = JSON.parse(this.responseText);
+                    var imageUrl = data1.url;
+                    insertImg(imageUrl);
+
+                }
+            }
+            myJSON1.open("GET", address1, true);
+            myJSON1.send();
+
+
+
+            //       var myJSON = new XMLHttpRequest();
+            //      var address = "http://api.open-notify.org/astros.json";
+
+            //    myJSON.onreadystatechange = function() {
+            //         if (this.readyState === 4 && this.status === 200) {
+            //              var data = JSON.parse(this.responseText);
+            //             var numPeople = data.number;
+            //             var text = "";
+            //             document.getElementById("output").innerHTML = numPeople;
+            //              for (var i = 0; i < numPeople; i++) {
+            //                 text = text + data.people[i].name + "<br>";
+            //            }
+            //             document.getElementById("output2").innerHTML = text;
+
+            //        }
+            //    }
+            //   myJSON.open("GET", address, true);
+            //   myJSON.send();
+        }, false);
+
+    </script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <div class="logo">
+                <h1>What's Up?</h1><span class="sub-logo">IN SPACE</span></div>
+            <button class="daily-image active">
+                <img src="images/planet-with-stars.png" alt="image of the day">
+            </button>
+            <button class="people">
+                <img src="images/man.png" alt="people in space">
+            </button>
+            <button class="space-station">
+                <img src="images/iss.png" alt="international space station">
+            </button>
+        </header>
+
+        <main>
+            <!--    <h2>How many astronauts are in space right now?</h2>
+            <p>Answer: </p>
+            <div id="output"></div>
+            <h2>Who are they?</h2>
+            <div id="output2"></div><br>  -->
+            <div id="image-of-the-day">
+            </div><br>
+        </main>
+
+        <footer>
+        </footer>
+    </div>
+    <!-- end of wrapper-->
+</body>
+
+</html>
